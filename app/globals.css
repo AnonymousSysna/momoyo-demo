@@ -1,0 +1,54 @@
+﻿@import 'tailwindcss';
+
+:root {
+  --momoyo-coral: #ff6b6b;
+  --momoyo-yellow: #ffd93d;
+  --momoyo-mint: #6bcb77;
+  --momoyo-cream: #fffde7;
+  --momoyo-brown: #3e1f00;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at 8% 10%, rgba(255, 217, 61, 0.2), transparent 28%),
+    radial-gradient(circle at 90% 0%, rgba(107, 203, 119, 0.18), transparent 30%),
+    var(--momoyo-cream);
+  color: var(--momoyo-brown);
+  font-family: var(--font-body), sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(6px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-rise {
+  animation: rise 0.35s ease-out;
+}
+

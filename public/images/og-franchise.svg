@@ -1,0 +1,8 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='630' viewBox='0 0 1200 630'>
+  <defs><linearGradient id='og' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='#FF6B6B'/><stop offset='100%' stop-color='#FCA5A5'/></linearGradient></defs>
+  <rect width='1200' height='630' fill='url(#og)'/>
+  <circle cx='1000' cy='120' r='160' fill='#FFFDE7' opacity='0.25'/>
+  <circle cx='180' cy='530' r='220' fill='#FFFDE7' opacity='0.18'/>
+  <text x='80' y='250' font-size='78' font-family='Arial, sans-serif' font-weight='800' fill='#3E1F00'>Momoyo Philippines</text>
+  <text x='80' y='340' font-size='48' font-family='Arial, sans-serif' font-weight='700' fill='#3E1F00'>Own a Momoyo Franchise</text>
+</svg>
