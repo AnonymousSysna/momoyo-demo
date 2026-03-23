@@ -1,5 +1,5 @@
 ﻿import Link from 'next/link';
-import { Facebook, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -24,8 +24,7 @@ export function Footer() {
           <div className='mt-3 flex gap-3'>
             <a href='#' aria-label='Facebook' className='rounded-full bg-white/10 p-2'><Facebook className='h-4 w-4' /></a>
             <a href='#' aria-label='Instagram' className='rounded-full bg-white/10 p-2'><Instagram className='h-4 w-4' /></a>
-            <a href='#' aria-label='TikTok' className='rounded-full bg-white/10 p-2 text-xs font-bold leading-4'>TT</a>
-            <a href='#' aria-label='X' className='rounded-full bg-white/10 p-2 text-xs font-bold leading-4'>X</a>
+            <a href='#' aria-label='Twitter' className='rounded-full bg-white/10 p-2'><Twitter className='h-4 w-4' /></a>
           </div>
         </div>
         <div className='space-y-2 text-sm'>
