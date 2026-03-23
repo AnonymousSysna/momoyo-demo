@@ -15,19 +15,19 @@ const heroItems = [
     src: '/images/hero-fruit-tea.svg',
     alt: 'Fruit tea cup',
     delay: 0,
-    className: 'left-[2%] top-[16%] sm:left-[8%] sm:top-[8%]',
+    desktopClass: 'left-[8%] top-[8%]',
   },
   {
     src: '/images/hero-ice-cream.svg',
     alt: 'Ice cream cup',
     delay: 0.2,
-    className: 'left-[32%] top-[44%] sm:left-[36%] sm:top-[42%]',
+    desktopClass: 'left-[36%] top-[42%]',
   },
   {
     src: '/images/hero-coffee.svg',
     alt: 'Coffee cup',
     delay: 0.4,
-    className: 'right-[2%] top-[12%] sm:right-[6%] sm:top-[10%]',
+    desktopClass: 'right-[6%] top-[10%]',
   },
 ] as const;
 
@@ -70,27 +70,45 @@ export function HeroSection() {
           <CountdownTimer />
         </div>
 
-        <div className='relative h-[280px] sm:h-[360px] lg:h-[420px]'>
-          {heroItems.map((item) => (
-            <motion.div
-              key={item.src}
-              className={`absolute ${item.className}`}
-              initial={{ y: 0 }}
-              animate={{ y: [0, -12, 0] }}
-              transition={{ duration: 3.4, repeat: Infinity, delay: item.delay, ease: 'easeInOut' }}
-            >
+        <div className='mt-2 sm:mt-0'>
+          <div className='flex items-center justify-center gap-3 sm:hidden'>
+            {heroItems.map((item) => (
               <Image
+                key={`mobile-${item.src}`}
                 src={item.src}
                 alt={item.alt}
-                width={220}
-                height={220}
+                width={110}
+                height={110}
                 placeholder='blur'
                 blurDataURL={blurDataURL}
                 priority
-                className='h-[120px] w-[120px] drop-shadow-xl sm:h-[170px] sm:w-[170px] lg:h-[220px] lg:w-[220px]'
+                className='h-[96px] w-[96px] drop-shadow-xl'
               />
-            </motion.div>
-          ))}
+            ))}
+          </div>
+
+          <div className='relative hidden h-[360px] sm:block lg:h-[420px]'>
+            {heroItems.map((item) => (
+              <motion.div
+                key={item.src}
+                className={`absolute ${item.desktopClass}`}
+                initial={{ y: 0 }}
+                animate={{ y: [0, -12, 0] }}
+                transition={{ duration: 3.4, repeat: Infinity, delay: item.delay, ease: 'easeInOut' }}
+              >
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  width={220}
+                  height={220}
+                  placeholder='blur'
+                  blurDataURL={blurDataURL}
+                  priority
+                  className='h-[170px] w-[170px] drop-shadow-xl lg:h-[220px] lg:w-[220px]'
+                />
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
