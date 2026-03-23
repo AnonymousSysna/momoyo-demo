@@ -7,28 +7,62 @@ import { Button } from '@/components/ui/button';
 import { CountdownTimer } from '@/components/shared/CountdownTimer';
 import { trackCtaClick } from '@/lib/analytics';
 
-const blurDataURL = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjRkZGREU3Ii8+PC9zdmc+';
+const blurDataURL =
+  'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjRkZGREU3Ii8+PC9zdmc+';
+
+const heroItems = [
+  {
+    src: '/images/hero-fruit-tea.svg',
+    alt: 'Fruit tea cup',
+    delay: 0,
+    className: 'left-[2%] top-[16%] sm:left-[8%] sm:top-[8%]',
+  },
+  {
+    src: '/images/hero-ice-cream.svg',
+    alt: 'Ice cream cup',
+    delay: 0.2,
+    className: 'left-[32%] top-[44%] sm:left-[36%] sm:top-[42%]',
+  },
+  {
+    src: '/images/hero-coffee.svg',
+    alt: 'Coffee cup',
+    delay: 0.4,
+    className: 'right-[2%] top-[12%] sm:right-[6%] sm:top-[10%]',
+  },
+] as const;
 
 export function HeroSection() {
   return (
-    <section className='relative min-h-screen overflow-hidden px-4 pb-16 pt-44 md:px-6'>
+    <section className='relative min-h-screen overflow-hidden px-4 pb-14 pt-36 md:px-6 md:pb-16 md:pt-44'>
       <motion.div
-        className='pointer-events-none absolute -top-40 left-1/2 h-[540px] w-[540px] -translate-x-1/2 rounded-full bg-gradient-to-r from-[#FF6B6B] via-[#FFD93D] to-[#6BCB77] opacity-45 blur-3xl'
+        className='pointer-events-none absolute -top-40 left-1/2 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-gradient-to-r from-[#FF6B6B] via-[#FFD93D] to-[#6BCB77] opacity-45 blur-3xl sm:h-[540px] sm:w-[540px]'
         animate={{ scale: [1, 1.2, 1], rotate: [0, 12, -8, 0] }}
         transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
       />
 
-      <div className='relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2'>
+      <div className='relative mx-auto grid max-w-7xl items-center gap-8 sm:gap-12 lg:grid-cols-2'>
         <div>
-          <p className='mb-4 inline-flex rounded-full bg-[#FFFDE7] px-4 py-1 text-sm font-semibold text-[#3E1F00]'>Freshly made in the Philippines</p>
-          <h1 className='font-display text-4xl font-black leading-tight text-[#3E1F00] sm:text-6xl'>Your Happiest Sip Starts Here.</h1>
-          <p className='mt-4 max-w-lg text-lg text-[#3E1F00]/80'>Fruit Tea • Ice Cream • Coffee — made fresh in the Philippines</p>
+          <p className='mb-4 inline-flex rounded-full bg-[#FFFDE7] px-4 py-1 text-xs font-semibold text-[#3E1F00] sm:text-sm'>
+            Freshly made in the Philippines
+          </p>
+          <h1 className='font-display text-3xl font-black leading-tight text-[#3E1F00] sm:text-5xl lg:text-6xl'>
+            Your Happiest Sip Starts Here.
+          </h1>
+          <p className='mt-4 max-w-lg text-base text-[#3E1F00]/80 sm:text-lg'>
+            Fruit Tea • Ice Cream • Coffee - made fresh in the Philippines
+          </p>
 
           <div className='mt-8 flex flex-col gap-3 sm:flex-row'>
-            <Button asChild size='lg' onClick={() => trackCtaClick('see_menu_hero', '/')}>
+            <Button asChild size='lg' className='w-full sm:w-auto' onClick={() => trackCtaClick('see_menu_hero', '/')}>
               <Link href='/menu'>See Our Menu</Link>
             </Button>
-            <Button asChild variant='outline' size='lg' onClick={() => trackCtaClick('find_store_hero', '/')}>
+            <Button
+              asChild
+              variant='outline'
+              size='lg'
+              className='w-full sm:w-auto'
+              onClick={() => trackCtaClick('find_store_hero', '/')}
+            >
               <Link href='/locations'>Find a Store</Link>
             </Button>
           </div>
@@ -36,29 +70,24 @@ export function HeroSection() {
           <CountdownTimer />
         </div>
 
-        <div className='relative h-[420px]'>
-          {[
-            { src: '/images/hero-fruit-tea.svg', alt: 'Fruit tea cup', top: '8%', left: '8%', delay: 0 },
-            { src: '/images/hero-ice-cream.svg', alt: 'Ice cream cup', top: '42%', left: '36%', delay: 0.2 },
-            { src: '/images/hero-coffee.svg', alt: 'Coffee cup', top: '10%', right: '6%', delay: 0.4 },
-          ].map((img) => (
+        <div className='relative h-[280px] sm:h-[360px] lg:h-[420px]'>
+          {heroItems.map((item) => (
             <motion.div
-              key={img.src}
-              className='absolute'
-              style={img as never}
+              key={item.src}
+              className={`absolute ${item.className}`}
               initial={{ y: 0 }}
               animate={{ y: [0, -12, 0] }}
-              transition={{ duration: 3.4, repeat: Infinity, delay: img.delay, ease: 'easeInOut' }}
+              transition={{ duration: 3.4, repeat: Infinity, delay: item.delay, ease: 'easeInOut' }}
             >
               <Image
-                src={img.src}
-                alt={img.alt}
+                src={item.src}
+                alt={item.alt}
                 width={220}
                 height={220}
                 placeholder='blur'
                 blurDataURL={blurDataURL}
                 priority
-                className='drop-shadow-xl'
+                className='h-[120px] w-[120px] drop-shadow-xl sm:h-[170px] sm:w-[170px] lg:h-[220px] lg:w-[220px]'
               />
             </motion.div>
           ))}
